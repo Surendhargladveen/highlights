@@ -1,0 +1,96 @@
+Refactored Highlights Beauty Salon Application
+==============================================
+
+Project Structure:
+------------------
+
+refactored-project/
+├── README.md                           # Complete refactoring guide
+├── ARCHITECTURE.md                     # Detailed architecture documentation
+├── PROJECT_STRUCTURE.txt              # This file
+├── pom.xml                            # Maven configuration
+├── build.bat                          # Build script (Windows)
+├── run.bat                            # Run script (Windows)
+│
+└── src/main/
+    ├── java/com/Highlights/
+    │   ├── HighlightsApp.java         # Main application entry point
+    │   ├── Launcher.java              # Application launcher
+    │   │
+    │   ├── controller/                # All controller files
+    │   │   ├── DashboardController.java           (Main orchestrator - ~230 lines)
+    │   │   ├── NavigationController.java          (Navigation panel - ~70 lines)
+    │   │   ├── CustomerController.java            (Customer management - ~460 lines)
+    │   │   ├── ProductController.java             (Product management - ~180 lines)
+    │   │   ├── InvoiceController.java             (Invoice & PDF - ~570 lines)
+    │   │   └── ProfitCalculatorController.java    (Profit calculator - ~150 lines)
+    │   │
+    │   ├── model/                     # Data models
+    │   │   ├── Customer.java
+    │   │   ├── Product.java
+    │   │   ├── Invoice.java
+    │   │   └── HighlightsApplication.java
+    │   │
+    │   └── database/                  # Database layer
+    │       └── DatabaseHandler.java
+    │
+    └── resources/                     # Application resources
+        └── fonts/
+            └── AMORIA.otf
+
+Key Features:
+-------------
+✅ Refactored from 1 huge file (1485 lines) to 6 focused controllers
+✅ All functionality preserved - works exactly the same
+✅ Clean separation of concerns
+✅ Easy to maintain and debug
+✅ Proper connectivity between all components
+
+Controllers Breakdown:
+---------------------
+1. DashboardController  - Main entry point, statistics, graphs
+2. NavigationController - Left panel navigation, routing
+3. CustomerController   - Add/Edit/Delete/Search customers, purchase history
+4. ProductController    - Product catalog management
+5. InvoiceController    - Invoice creation, PDF generation, invoice history
+6. ProfitCalculatorController - Profit margin calculations
+
+Database Tables:
+---------------
+- customers       (Customer data)
+- products        (Product catalog)
+- invoices        (Invoice headers)
+- invoice_items   (Invoice line items)
+- users           (Application users)
+
+How to Build & Run:
+------------------
+1. Ensure Java 8+ and Maven are installed
+2. Run: mvn clean compile
+3. Run: mvn exec:java
+   OR use build.bat and run.bat (Windows)
+
+Technology Stack:
+----------------
+- Java 8+
+- JavaFX (UI Framework)
+- SQLite (Database)
+- Maven (Build Tool)
+- iTextPDF (PDF Generation)
+
+Migration from Old Code:
+-----------------------
+If you have the old single-file DashboardController:
+
+1. Backup your current project
+2. Delete: src/main/java/com/Highlights/controller/DashboardController.java
+3. Copy ALL files from this refactored project
+4. Build and run
+
+No database changes required!
+No model changes required!
+
+For Support:
+-----------
+Refer to README.md for detailed migration guide
+Refer to ARCHITECTURE.md for detailed connectivity diagrams
